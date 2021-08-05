@@ -6,13 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
-    <canvas id="frame"></canvas>
-    <canvas id="grey"></canvas>
+<body style="text-align: center;">
+    <div>
+        <canvas id="frame"></canvas>
+        <canvas id="grey"></canvas>
+    </div>
+    <pre id="text"></pre>
+    <br>
+    <h1>Đón xem livestream của mình nhé</h1>
+    <h1>Mình sẽ giải đáp các thắc mắc của mọi người về lập trình / nghề lập trình trên livestream</h1>
     <script src="script.js"></script>
-
+    <style>
+        #text {
+            font-size: 5px;
+            letter-spacing: 3px;
+            background-color: black;
+            color: white;
+            display: inline-block;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        h1 {
+            padding: 40px;
+            line-height: 1.5;
+            font-size: 60px
+        }
+    </style>
 </body>
 
 </html>

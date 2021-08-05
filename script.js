@@ -17,11 +17,15 @@ canvas.height = greyCanvas.height = HEIGHT;
 function render() {
     if (!img.loaded) return;
     draw();
+    let s = '';
     for (let y = 0; y < HEIGHT; y++) {
         for (let x = 0; x < WIDTH; x++) {
-            greyscale(ctx, ctx2, x, y);
+            const avg = greyscale(ctx, ctx2, x, y);
+            s += parseAscii(avg); // TODO: get a character with the darkness like pixel
         }
+        s += '\n';
     }
+    document.getElementById('text').innerText = s;
 }
 
 function greyscale(ctx, ctx2, x, y) {
@@ -33,6 +37,7 @@ function greyscale(ctx, ctx2, x, y) {
     imageData.data[0] = imageData.data[1] = imageData.data[2] = avg;
     imageData.data[3] = alpha;
     ctx2.putImageData(imageData, x, y);
+    return avg;
 }
 
 let move = 4;
@@ -60,3 +65,10 @@ document.addEventListener('keydown', function(e) {
 })
 
 setInterval(render, 100);
+
+const CHARS = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split('').reverse().join('');
+const k = 256 / (CHARS.length);
+
+function parseAscii(n) {
+    return CHARS[Math.floor(n / k)];
+}
